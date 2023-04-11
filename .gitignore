@@ -13,3 +13,6 @@ ai_settings.yaml
 .vscode
 auto-gpt.json
 log.txt
+
+.venv/*
+.vscode/*
