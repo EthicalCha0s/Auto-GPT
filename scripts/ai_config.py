@@ -31,6 +31,10 @@ class AIConfig:
     # Soon this will go in a folder where it remembers more stuff about the run(s)
     SAVE_FILE = os.path.join(os.path.dirname(__file__), '..', 'ai_settings.yaml')
 
+    # Check if environment variable is set for SAVE_FILE
+    if os.environ.get("SAVE_FILE"):
+        SAVE_FILE = os.environ.get("SAVE_FILE")
+
     @classmethod
     def load(cls: object, config_file: str=SAVE_FILE) -> object:
         """

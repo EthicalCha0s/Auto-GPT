@@ -1,0 +1,32 @@
+name: ai
+root: ~/code/tools/autogpt
+pre_window: rbenv shell 2.0.0-p247 # Runs in each tab and pane
+tmux_detached: false
+windows:
+  - models:
+      pre:
+        - cd ~/code/tools/autogpt
+        - . .venv/bin/activate
+      layout: main-vertical
+      panes:
+        - zero:
+          - export SAVE_FILE=''
+          - export AI_WORKSPACE=''
+          - python3 scripts/main.py --continuous
+          - y
+        - first:
+          - python3 scripts/main.py --continuous
+          - y
+        - second:
+          - python3 scripts/main.py --continuous
+          - y
+  - shell:
+    - git status
+  - target:
+      layout: tiled
+      pre:
+        - echo "I get run in each pane."
+        - echo "Before each pane command!"
+      panes:
+        -
+        - #empty, will just run plain bash
